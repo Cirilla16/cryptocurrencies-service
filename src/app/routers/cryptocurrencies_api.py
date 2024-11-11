@@ -1,13 +1,12 @@
-import datetime
-
 import httpx
-from fastapi import Header, Query, FastAPI
-from typing import Optional, List, Dict
+from fastapi import Query
+from typing import List, Dict
 import pandas as pd
 from fastapi import APIRouter
 
-from app.models.response import CommRes
-
+from src.app.models.response import CommRes
+import os
+print(f'--------------{os.getcwd()}---------------------')
 crypto_currencies_router = APIRouter(prefix="/crypto-currencies", tags=["Crypto Currencies"])
 router = crypto_currencies_router
 
@@ -16,13 +15,13 @@ API_KEY = "14AKOXBPYLKCAI2R"
 
 @router.get("/currencies/query_physical_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
 async def query_physical_currencies():
-    physical_data_path='../resources/physical_currency_list.csv'
+    physical_data_path='src/resources/physical_currency_list.csv'
     physical_data=read_csv_currency_file(physical_data_path)
     return CommRes(data=physical_data)
 
 @router.get("/currencies/query_digital_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
 async def query_digital_currencies():
-    digital_data_path='../resources/digital_currency_list.csv'
+    digital_data_path='src/resources/digital_currency_list.csv'
     digital_data=read_csv_currency_file(digital_data_path)
     return CommRes(data=digital_data)
 

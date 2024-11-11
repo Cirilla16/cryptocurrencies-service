@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from app.routers.cryptocurrencies_api import crypto_currencies_router
+from src.app.routers.cryptocurrencies_api import crypto_currencies_router
 
 app = FastAPI()
 
