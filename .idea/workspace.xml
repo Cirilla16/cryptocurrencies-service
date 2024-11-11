@@ -4,29 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4ef6f61-3154-40cd-af74-d872ba1e3629" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/fastApiProject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/dao/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/models/response.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/routers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/routers/cryptocurrencies_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/digital_currency_list.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/physical_currency_list.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_main.http" afterDir="false" />
+    <list default="true" id="f4ef6f61-3154-40cd-af74-d872ba1e3629" name="Changes" comment="feat: add dockerfile">
+      <change afterPath="$PROJECT_DIR$/src/app/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/config/api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/services/cryptocurrencies_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/routers/cryptocurrencies_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/routers/cryptocurrencies_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +30,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Cirilla16"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Cirilla16/cryptocurrencies-service.git",
+    "accountId": "41781a78-f6b4-412b-a84e-cb73d73a7c72"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -61,20 +58,23 @@
     "FastAPI.fastApiProject.executor": "Debug",
     "Python.main (1).executor": "Debug",
     "Python.main.executor": "Debug",
+    "Python.maind.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Cirilla/All/Code/SoftwareDesignAndArchitecture/stockService1/fastApiProject",
+    "last_opened_file_path": "C:/Users/Cirilla/All/Code/SoftwareDesignAndArchitecture/stockService1/fastApiProject/src/app/services",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Cirilla\All\Code\SoftwareDesignAndArchitecture\stockService1\fastApiProject\src\app\services" />
       <recent name="C:\Users\Cirilla\All\Code\SoftwareDesignAndArchitecture\stockService1\fastApiProject" />
       <recent name="C:\Users\Cirilla\All\Code\SoftwareDesignAndArchitecture\stockService1\fastApiProject\resources" />
       <recent name="C:\Users\Cirilla\All\Code\SoftwareDesignAndArchitecture\stockService1\fastApiProject\app\models" />
@@ -85,30 +85,7 @@
       <recent name="C:\Users\Cirilla\All\Code\SoftwareDesignAndArchitecture\stockService1\fastApiProject\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
-    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="fastApiProject" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/app" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.maind">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fastApiProject" />
       <option name="ENV_FILES" value="" />
@@ -124,6 +101,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="maind" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="fastApiProject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,9 +148,13 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="FastAPI.fastApiProject" />
+      <item itemvalue="Python.maind" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.maind" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -173,12 +177,26 @@
       <updated>1731025184125</updated>
       <workItem from="1731025185481" duration="1939000" />
       <workItem from="1731187757345" duration="1628000" />
-      <workItem from="1731288284832" duration="2152000" />
+      <workItem from="1731288284832" duration="4953000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add dockerfile">
+      <option name="closed" value="true" />
+      <created>1731290835976</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731290835976</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <MESSAGE value="feat: add dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add dockerfile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -192,7 +210,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/fastApiProject$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1731290083510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/app" />
+    <SUITE FILE_PATH="coverage/fastApiProject$main__1_.coverage" NAME="maind Coverage Results" MODIFIED="1731340112761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/" />
     <SUITE FILE_PATH="coverage/fastApiProject$main.coverage" NAME="main Coverage Results" MODIFIED="1731289847849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/fastApiProject$fastApiProject.coverage" NAME="fastApiProject Coverage Results" MODIFIED="1731026371724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>

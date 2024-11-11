@@ -1,57 +1,65 @@
-import httpx
+import datetime
+
 from fastapi import Query
 from typing import List, Dict
-import pandas as pd
 from fastapi import APIRouter
+from fastapi.params import Depends
 
+from app.services.cryptocurrencies_service import CryptoCurrenciesService
 from src.app.models.response import CommRes
 import os
 print(f'--------------{os.getcwd()}---------------------')
 crypto_currencies_router = APIRouter(prefix="/crypto-currencies", tags=["Crypto Currencies"])
 router = crypto_currencies_router
 
-ALPHA_VANTAGE_BASE_URL = "https://www.alphavantage.co/query"
-API_KEY = "14AKOXBPYLKCAI2R"
+
 
 @router.get("/currencies/query_physical_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
-async def query_physical_currencies():
+async def query_physical_currencies(service:CryptoCurrenciesService=Depends()):
     physical_data_path='src/resources/physical_currency_list.csv'
-    physical_data=read_csv_currency_file(physical_data_path)
+    physical_data=service.read_csv_currency_file(physical_data_path)
     return CommRes(data=physical_data)
 
 @router.get("/currencies/query_digital_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
-async def query_digital_currencies():
+async def query_digital_currencies(service:CryptoCurrenciesService=Depends()):
     digital_data_path='src/resources/digital_currency_list.csv'
-    digital_data=read_csv_currency_file(digital_data_path)
+    digital_data=service.read_csv_currency_file(digital_data_path)
     return CommRes(data=digital_data)
 
-
-
-def read_csv_currency_file(path:str)->List[Dict[str,str]]:
-    try:
-        currency_data = pd.read_csv(path)
-        print("CSV file successfully read. Here are the first few rows:")
-        print(currency_data.head())
-        return currency_data.to_dict(orient='records')
-    except FileNotFoundError:
-        print(f"File not found at: {path}")
-    except Exception as e:
-        print(f"An error occurred while reading the file: {e}")
-
 @router.get("/exhange-rate/query", response_model=CommRes[Dict], summary="", description="")
-async def query_exchange_rate(from_currency: str = Query('BTC', description=""),to_currency: str = Query('USD', description="")):
-    url = 'https://www.alphavantage.co/query'
-    PARAMS = {
-        "function": "CURRENCY_EXCHANGE_RATE",
-        "from_currency": from_currency,
-        "to_currency": to_currency,
-        "apikey": API_KEY
-    }
-    async with httpx.AsyncClient() as client:
-        response = await client.get(ALPHA_VANTAGE_BASE_URL, params=PARAMS)
-        if response.status_code == 200:
-            data = response.json()
-            print(data)
-            return CommRes(data=data)
-        else:
-            print(f"Error: {response.status_code}")
+async def query_exchange_rate(from_currency: str = Query('BTC', description=""),to_currency: str = Query('USD', description=""),service:CryptoCurrenciesService=Depends()):
+        data=await service.query_exchange_rate(from_currency,to_currency)
+        return CommRes(data=data)
+
+@router.get("/fx-daily",response_model=CommRes[Dict], summary="", description="")
+async def get_fx_daily(
+    from_symbol: str = Query('EUR', description="The base currency symbol (e.g., EUR)"),
+    to_symbol: str = Query("USD", description="The target currency symbol (e.g., USD)"),
+    start_date: datetime.datetime = Query(datetime.datetime.strptime('2024-06-02', "%Y-%m-%d"), description="The start date of the time series"),
+    end_date: datetime.datetime = Query(datetime.datetime.now().date(), description="The end date of the time series"),
+    service:CryptoCurrenciesService=Depends()
+):
+    data=await service.get_fx_daily(from_symbol,to_symbol,start_date,end_date)
+    return CommRes(data=data)
+
+@router.get("/fx-weekly",response_model=CommRes[Dict], summary="", description="")
+async def get_fx_weekly(
+    from_symbol: str = Query('EUR', description="The base currency symbol (e.g., EUR)"),
+    to_symbol: str = Query("USD", description="The target currency symbol (e.g., USD)"),
+    start_date: datetime.datetime = Query(datetime.datetime.strptime('2023-12-02', "%Y-%m-%d"), description="The start date of the time series"),
+    end_date: datetime.datetime = Query(datetime.datetime.now().date(), description="The end date of the time series"),
+    service:CryptoCurrenciesService=Depends()
+):
+    data=await service.get_fx_weekly(from_symbol,to_symbol,start_date,end_date)
+    return CommRes(data=data)
+@router.get("/fx-monthly",response_model=CommRes[Dict], summary="", description="")
+async def get_fx_monthly(
+    from_symbol: str = Query('EUR', description="The base currency symbol (e.g., EUR)"),
+    to_symbol: str = Query("USD", description="The target currency symbol (e.g., USD)"),
+    start_date: datetime.datetime = Query(datetime.datetime.strptime('2023-12-30', "%Y-%m-%d"), description="The start date of the time series"),
+    end_date: datetime.datetime = Query(datetime.datetime.now().date(), description="The end date of the time series"),
+    service:CryptoCurrenciesService=Depends()
+):
+    data=await service.get_fx_monthly(from_symbol,to_symbol,start_date,end_date)
+    return CommRes(data=data)
+
