@@ -22,4 +22,4 @@
 
 ### Docker deployment:
 - docker build -t crypto_service:latest -f Dockerfile .
-- docker run -itd -p 8000:8000 --name crypto_service crypto_service
+- docker run -itd -p 8000:8000 --env ENV=dev --name crypto_service crypto_service

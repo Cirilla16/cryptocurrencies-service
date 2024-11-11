@@ -3,10 +3,11 @@ from typing import List, Dict
 import httpx
 from fastapi import HTTPException
 
+from app.config.alpha_vantage_api import alphaVantageConfig
 from app.services.base import BaseService
 import pandas as pd
 ALPHA_VANTAGE_BASE_URL = "https://www.alphavantage.co/query"
-API_KEY = "14AKOXBPYLKCAI2R"
+
 
 class CryptoCurrenciesService(BaseService):
     def __init__(self):
@@ -29,7 +30,7 @@ class CryptoCurrenciesService(BaseService):
             "function": "CURRENCY_EXCHANGE_RATE",
             "from_currency": from_currency,
             "to_currency": to_currency,
-            "apikey": API_KEY
+            "apikey": alphaVantageConfig.API_KEY
         }
         async with httpx.AsyncClient() as client:
             response = await client.get(ALPHA_VANTAGE_BASE_URL, params=PARAMS)
@@ -43,7 +44,7 @@ class CryptoCurrenciesService(BaseService):
             "function": "FX_DAILY",
             "from_symbol": from_symbol,
             "to_symbol": to_symbol,
-            "apikey": API_KEY,
+            "apikey": alphaVantageConfig.API_KEY,
         }
 
         async with httpx.AsyncClient() as client:
@@ -61,7 +62,7 @@ class CryptoCurrenciesService(BaseService):
             "function": "FX_WEEKLY",
             "from_symbol": from_symbol,
             "to_symbol": to_symbol,
-            "apikey": API_KEY,
+            "apikey": alphaVantageConfig.API_KEY,
         }
 
         async with httpx.AsyncClient() as client:
@@ -79,7 +80,7 @@ class CryptoCurrenciesService(BaseService):
             "function": "FX_MONTHLY",
             "from_symbol": from_symbol,
             "to_symbol": to_symbol,
-            "apikey": API_KEY,
+            "apikey": alphaVantageConfig.API_KEY,
         }
 
         async with httpx.AsyncClient() as client:

@@ -2,3 +2,5 @@ fastapi==0.115.4
 httpx
 uvicorn==0.32.0
 pandas==2.2.3
+pydantic==2.9.2
+pydantic-settings==2.6.1
