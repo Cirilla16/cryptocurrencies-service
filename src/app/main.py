@@ -9,11 +9,24 @@ load_dotenv(f'./src/{environment}.env')
 if not os.path.exists(f'./src/{environment}.env'):
     load_dotenv(f'./{environment}.env')
 
-
+from fastapi.middleware.cors import CORSMiddleware
 from src.app.routers.cryptocurrencies_api import crypto_currencies_router
 
 app = FastAPI()
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://host.docker.internal:5173",
+    "http://localhost:53",
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(crypto_currencies_router)
 
 @app.get("/")

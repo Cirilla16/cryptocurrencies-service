@@ -6,30 +6,29 @@ from fastapi import APIRouter
 from fastapi.params import Depends
 
 from app.services.cryptocurrencies_service import CryptoCurrenciesService
-from src.app.models.response import CommRes
-import os
-print(f'--------------{os.getcwd()}---------------------')
+from src.app.models.response import CommRes, CommResCode
+
 crypto_currencies_router = APIRouter(prefix="/crypto-currencies", tags=["Crypto Currencies"])
 router = crypto_currencies_router
 
-
-
-@router.get("/currencies/query_physical_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
+@router.get("/query_physical_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
 async def query_physical_currencies(service:CryptoCurrenciesService=Depends()):
-    physical_data_path='src/resources/physical_currency_list.csv'
+    physical_data_path='resources/physical_currency_list.csv'
     physical_data=service.read_csv_currency_file(physical_data_path)
     return CommRes(data=physical_data)
 
-@router.get("/currencies/query_digital_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
+@router.get("/query_digital_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
 async def query_digital_currencies(service:CryptoCurrenciesService=Depends()):
-    digital_data_path='src/resources/digital_currency_list.csv'
+    digital_data_path='resources/digital_currency_list.csv'
     digital_data=service.read_csv_currency_file(digital_data_path)
     return CommRes(data=digital_data)
 
-@router.get("/exhange-rate/query", response_model=CommRes[Dict], summary="", description="")
+@router.get("/exchange-rate/query", response_model=CommRes[Dict], summary="", description="")
 async def query_exchange_rate(from_currency: str = Query('BTC', description=""),to_currency: str = Query('USD', description=""),service:CryptoCurrenciesService=Depends()):
         data=await service.query_exchange_rate(from_currency,to_currency)
-        return CommRes(data=data)
+        if data and data.get("Error Message")==None:
+            return CommRes(data=data)
+        return CommRes(errorcode=CommResCode.FAIL, msg="Invalid currency pair")
 
 @router.get("/fx-daily",response_model=CommRes[Dict], summary="", description="")
 async def get_fx_daily(

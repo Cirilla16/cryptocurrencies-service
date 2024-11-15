@@ -21,5 +21,15 @@
     - QR4.1  Only authorized users can access the information.
 
 ### Docker deployment:
-- docker build -t crypto_service:latest -f Dockerfile .
-- docker run -itd -p 8000:8000 --env ENV=dev --name crypto_service crypto_service
+- docker build -t cryptocurrencies_service:latest -f Dockerfile .
+- docker tag cryptocurrencies_service cirilla16/cryptocurrencies_service:latest
+- docker push cirilla16/cryptocurrencies_service:latest
+- docker run -itd -p 8000:8000 --env ENV=dev --name cryptocurrencies_service cirilla16/cryptocurrencies_service
+
+
+
+
+
+ 
+ 
+ 

@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4ef6f61-3154-40cd-af74-d872ba1e3629" name="Changes" comment="feat: view cryptocurrencies historical timeseries data">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/config/alpha_vantage_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dev.env" afterDir="false" />
+    <list default="true" id="f4ef6f61-3154-40cd-af74-d872ba1e3629" name="Changes" comment="feat: support different environments">
+      <change afterPath="$PROJECT_DIR$/pod.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/random_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/config/api.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/cryptocurrencies_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/cryptocurrencies_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/routers/cryptocurrencies_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/routers/cryptocurrencies_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,18 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Cirilla16"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Cirilla16&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Cirilla16/cryptocurrencies-service.git",
-    "accountId": "41781a78-f6b4-412b-a84e-cb73d73a7c72"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Cirilla16/cryptocurrencies-service.git&quot;,
+    &quot;accountId&quot;: &quot;41781a78-f6b4-412b-a84e-cb73d73a7c72&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -55,25 +54,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "FastAPI.fastApiProject.executor": "Debug",
-    "Python.main (1).executor": "Debug",
-    "Python.main.executor": "Debug",
-    "Python.maind.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Cirilla/All/Code/SoftwareDesignAndArchitecture/stockService1/fastApiProject/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;FastAPI.fastApiProject.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.main (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.maind.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Cirilla/All/Code/DataAnalyticsFoundations/assignments/assignment2/assignment-2-assignment-group-3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Cirilla\All\Code\SoftwareDesignAndArchitecture\stockService1\fastApiProject\src" />
@@ -154,6 +153,7 @@
     </configuration>
     <list>
       <item itemvalue="FastAPI.fastApiProject" />
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.maind" />
     </list>
     <recent_temporary>
@@ -181,7 +181,13 @@
       <updated>1731025184125</updated>
       <workItem from="1731025185481" duration="1939000" />
       <workItem from="1731187757345" duration="1628000" />
-      <workItem from="1731288284832" duration="6461000" />
+      <workItem from="1731288284832" duration="6669000" />
+      <workItem from="1731366010874" duration="352000" />
+      <workItem from="1731424901186" duration="21000" />
+      <workItem from="1731432786123" duration="600000" />
+      <workItem from="1731442079508" duration="16000" />
+      <workItem from="1731533425575" duration="2688000" />
+      <workItem from="1731632762622" duration="4149000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add dockerfile">
       <option name="closed" value="true" />
@@ -199,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731341050581</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: support different environments">
+      <option name="closed" value="true" />
+      <created>1731342239920</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731342239920</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,15 +223,21 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="feat: add dockerfile" />
     <MESSAGE value="feat: view cryptocurrencies historical timeseries data" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: view cryptocurrencies historical timeseries data" />
+    <MESSAGE value="feat: support different environments" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: support different environments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/app/routers/cryptocurrencies_api.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/app/services/cryptocurrencies_service.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/app/services/cryptocurrencies_service.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
