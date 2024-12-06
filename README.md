@@ -24,7 +24,7 @@
 - docker build -t cryptocurrencies_service:latest -f Dockerfile .
 - docker tag cryptocurrencies_service cirilla16/cryptocurrencies_service:latest
 - docker push cirilla16/cryptocurrencies_service:latest
-- docker run -itd -p 8000:8000 --env ENV=dev --name cryptocurrencies_service cirilla16/cryptocurrencies_service
+- docker run -itd -p 8080:8080 --env ENV=dev --name cryptocurrencies_service cirilla16/cryptocurrencies_service
 
 
 

@@ -19,10 +19,12 @@ class CryptoCurrenciesService(BaseService):
             print("CSV file successfully read. Here are the first few rows:")
             print(currency_data.head())
             return currency_data.to_dict(orient='records')
-        except FileNotFoundError:
+        except FileNotFoundError as e:
             print(f"File not found at: {path}")
+            raise e
         except Exception as e:
             print(f"An error occurred while reading the file: {e}")
+            raise e
 
     async def query_exchange_rate(self, from_currency: str,to_currency: str):
         url = 'https://www.alphavantage.co/query'
@@ -36,9 +38,11 @@ class CryptoCurrenciesService(BaseService):
             response = await client.get(ALPHA_VANTAGE_BASE_URL, params=PARAMS)
             if response.status_code == 200:
                 data = response.json()
+                print(data)
                 return data
             else:
                 print(f"Error: {response.status_code}")
+
     async def get_fx_daily(self, from_symbol: str, to_symbol: str, start_date: datetime.datetime, end_date: datetime.datetime):
         params = {
             "function": "FX_DAILY",
@@ -51,7 +55,10 @@ class CryptoCurrenciesService(BaseService):
             response = await client.get(ALPHA_VANTAGE_BASE_URL, params=params)
             if response.status_code == 200:
                 data = response.json()
-                return await self.filter_by_time(data['Time Series FX (Daily)'], start_date, end_date)
+                if data.get('Time Series FX (Daily)'):
+                    return await self.filter_by_time(data['Time Series FX (Daily)'], start_date, end_date)
+                else:
+                    return await self.filter_by_time(data['Time Series (Digital Currency Daily)'], start_date, end_date)
             else:
                 raise HTTPException(
                     status_code=response.status_code,
@@ -95,7 +102,11 @@ class CryptoCurrenciesService(BaseService):
                 )
     async def filter_by_time(self, data: Dict, start_date: datetime.datetime, end_date: datetime.datetime):
         filtered_data = {}
-        for key, value in data.items():
-            if start_date <= datetime.datetime.strptime(key, "%Y-%m-%d") <= end_date:
-                filtered_data[key] = value
-        return filtered_data
+        try:
+            for key, value in data.items():
+                if start_date <= datetime.datetime.strptime(key, "%Y-%m-%d") <= end_date:
+                    filtered_data[key] = value
+            return filtered_data
+        except Exception as e:
+            print(f"An error occurred while filtering data: {e}")
+            raise e

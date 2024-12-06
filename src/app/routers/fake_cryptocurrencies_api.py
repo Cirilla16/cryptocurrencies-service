@@ -5,21 +5,21 @@ from typing import List, Dict
 from fastapi import APIRouter
 from fastapi.params import Depends
 
-from app.services.cryptocurrencies_service import CryptoCurrenciesService
+from app.services.fake_cryptocurrencies_service import FakeCryptoCurrenciesService as CryptoCurrenciesService
 from src.app.models.response import CommRes, CommResCode
-import os
-crypto_currencies_router = APIRouter(prefix="/crypto-currencies", tags=["Crypto Currencies"])
-router = crypto_currencies_router
+
+fake_crypto_currencies_router = APIRouter(prefix="/fake-crypto-currencies", tags=["Crypto Currencies"])
+router = fake_crypto_currencies_router
 
 @router.get("/query_physical_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
 async def query_physical_currencies(service:CryptoCurrenciesService=Depends()):
-    physical_data_path='src/resources/physical_currency_list.csv'
+    physical_data_path='resources/physical_currency_list.csv'
     physical_data=service.read_csv_currency_file(physical_data_path)
     return CommRes(data=physical_data)
 
 @router.get("/query_digital_currencies", response_model=CommRes[List[Dict[str,str]]], summary="", description="")
 async def query_digital_currencies(service:CryptoCurrenciesService=Depends()):
-    digital_data_path='src/resources/digital_currency_list.csv'
+    digital_data_path='resources/digital_currency_list.csv'
     digital_data=service.read_csv_currency_file(digital_data_path)
     return CommRes(data=digital_data)
 
